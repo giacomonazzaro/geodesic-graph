@@ -1,40 +1,10 @@
-# Csg Explorer
-A small library to conviniently define ... and efficiently render them.
-Python bindings included!
+# Geodesic Graph
+The data structure implemented in `source/geodesic_graph.h`, together with the visist
 
-# Example
-This an example screenshot from the real-time renderer.
-![](data/screenshot.png)
-And this is the text file that defines the shape. It can be found in `data/test.csg`.
-```python
-head = sphere 0.0 0.0 -0.1 0.4
+# Results
+![](data/results.png)
+Comparison between this geodesic solver, and the solver from [Crane et al. 2013](https://arxiv.org/abs/1204.6216), the fastest solver for approximate geodesiscs. For the latter, implementation provided by the author was used, using Cholmod as backend. Columns build report pre-processing times to pre-factor the system and to build the graph, respectively. Build times for this solver also include the time to compute the triangle adjacency needed to build the graph. Columns solve report average time for computing the distance field from a single point source, where average is taken over 100 random samples. Root-mean-square errors are computed with respect to the exact polyhedral solution from [Qin et al. 2016].
 
-orbits = sphere 0.2 0.2 0.25 0.1
-orbits += sphere -0.2 0.2 0.25 0.1
-head -= 0.7 0.05 orbits
-
-eyes = sphere 0.16 0.16 0.18 0.03
-eyes += sphere -0.16 0.16 0.18 0.03
-head += eyes
-
-nose = sphere 0.0 0.0 0.3 0.1
-head += 1.0 0.05 nose
-
-mouth = sphere -0.1 -0.2 0.25 0.05
-mouth += 1.0 0.05 sphere 0.0 -0.2 0.25 0.05
-mouth += 1.0 0.05 sphere 0.1 -0.2 0.25 0.05
-head -= mouth
-
-```
-
-# Python binding
-
-```python
-from pycsg import *
-
-csg = load_csg("test.csg", False)
-render(csg)
-```
 
 # Build
 If you have Ninja installed.

@@ -1,0 +1,7 @@
+*.png
+gltf
+obj
+ybin
+json
+pbrt
+yaml

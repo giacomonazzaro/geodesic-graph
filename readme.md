@@ -9,7 +9,8 @@ Comparison between this geodesic solver, and the solver from [Crane et al. 2013]
 
 # Parallelization
 ![](data/parallel-geodesic.gif)
-The solver also supports lock-free parallel execution. In the parallel case, the algorithm does not change, only the data structure does. The mesh is partitioned into sub-mesh, over which the algortithm can run in parallel. After each round, the boundary information is updated in a synchronization step.
+
+The solver also supports lock-free parallel execution. The parallel algorithm does not change, only the data structure does. The mesh is partitioned into sub-meshes, over which the algortithm is run in parallel. After each round, the boundary information is updated in a synchronization step. The parallel version provides a 2x speed up on my laptop with 4 cores.
 
 
 # Build

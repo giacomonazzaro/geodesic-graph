@@ -16,3 +16,6 @@ add_subdirectory (source/ext/yocto-gl)
 include_directories (source/ext)
 add_executable(main source/main.cpp source/geodesic_graph.cpp)
 target_link_libraries(main yocto)
+
+add_executable(mesh_ripper source/parallel/main.cpp source/geodesic_graph.cpp)
+target_link_libraries(mesh_ripper yocto)
